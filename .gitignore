@@ -1,0 +1,7 @@
+*.log
+logs
+
+.env
+
+
+/node_modules
