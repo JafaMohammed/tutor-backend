@@ -32,19 +32,7 @@ const userSchema = new mongoose.Schema({
         enum: ["tutor","student"],
         required:[true, "Please select an option"]
     },
-    subjects:[
-        {
-            name:{
-                type:String,
-                required:[true,"Please enter your subject"],
-            },
-            rate:{
-                type:Number,
-                required:[true,"Please enter hourly rate"]
-            },
-            
-        }
-    ],
+
     password:{
         type:String,
         required:[true, "Please input your password"],
@@ -54,12 +42,13 @@ const userSchema = new mongoose.Schema({
     passwordConfirm:{
         type:String,
         required:[true, "Please confirm the password"],
-        validate: function(val){
-            //return t or f
-            return this.password === val;
-        },
-        message: "Passwords do not match",
-        
+        validate: {
+            validator: function(val) {
+                //return t or f
+                return this.password === val;
+            },
+            message: "Passwords do not match",
+        }
     },
     photo:{
         type: String,
@@ -80,7 +69,17 @@ const userSchema = new mongoose.Schema({
         select:false
     }
     
+},{
+    toJSON: {virtuals:true},
+    toObject: {virtuals:true},
+    id: false
 });
+
+userSchema.virtual('subjects',{
+    ref: 'Subject',
+    foreignField: 'tutor',
+    localField: '_id'
+})
 
 userSchema.pre('save',function (next){
     if (!this.isModified('password')||this.isNew) return next();
@@ -103,24 +102,9 @@ userSchema.pre("save",async function(next){
         next(e)
     }
 
-}) 
-/*TODO validation- only tutors can input and update subjects*/
-// userSchema.pre("findOneAndUpdate",async function(next){
+})
 
-// if (this.getUpdate().$set.subjects) {
-//     if(this.option !== "tutor"){
-//         return next(new AppError("Only tutors can add subjects", 401))
-//     }else{
-//         return next()
-//     }
-// }else{
-//     return next()
-// }
-// }) 
-
-
-
-//create a fxn called authgenerate token 
+//Generate JWT
 userSchema.methods.generateAuthToken= function(statusCode,res){
     
         const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXP })

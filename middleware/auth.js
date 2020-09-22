@@ -4,7 +4,7 @@ const User = require ("../models/userModel");
 const AppError =  require ("../utils/appError");
 const catchAsync = require('../utils/catchAsync');
 
-exports.auth=catchAsync(async (req,res,next)=>{
+const auth=catchAsync(async (req,res,next)=>{
     // 1) GET TOKEN AND CHECK IF IT EXISTS
     let token;
 
@@ -25,3 +25,4 @@ exports.auth=catchAsync(async (req,res,next)=>{
      next()
 
 })
+module.exports=auth;

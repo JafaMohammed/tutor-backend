@@ -6,15 +6,10 @@ const _ = require('lodash');
 const crypto=require('crypto');
 
 exports.signup = catchAsync(async(req,res,next)=>{
+    const {name, phonenumber,email,password,passwordConfirm,option,photo}=req.body
         const user = await User.create({
-            name: req.body.name,
-            phonenumber: req.body.phonenumber,
-            email: req.body.email,
-            password: req.body.password,
-            passwordConfirm: req.body.passwordConfirm,
-            option: req.body.option,
-            photo: req.body.photo,
-        
+            name,email,phonenumber,password,
+            passwordConfirm, option,photo
         });
 
         user.generateAuthToken(201, res);
