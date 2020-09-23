@@ -4,7 +4,7 @@ const morgan=require('morgan');
 const helmet = require('helmet')
 
 const users = require("./routes/usersRoutes");
-const subjects = require("./routes/subjectsRoutes");
+const subjects = require("./routes/tutorSubjectsRoutes");
 const AppError=require('./utils/appError')
 
 const error = require("./middleware/error")

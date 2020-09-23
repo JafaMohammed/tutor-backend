@@ -13,7 +13,9 @@ const {
     resetPassword,
     updatePassword
 } = require ('../controllers/authController');
+
 const router = express.Router();
+const tutorSubjectsRouter=require('./tutorSubjectsRoutes')
 
 router.post("/signup", signup);
 router.post("/login",login);
@@ -27,6 +29,9 @@ router.use("/updateMe",updateMe);
 router.use("/deleteMe",deleteMe);
 router.use("/updateMyPassword",updatePassword);
 
+
+//NESTED ROUTE -- /users/id/subjects - Get all subjects for a tutor
+router.use('/:tutorId/subjects',restrictTo('tutor','admin'),tutorSubjectsRouter)
 
 // router.use(restrictTo('admin'))
 

@@ -7,7 +7,7 @@ const {
     deleteSubject
 } =require('../controllers/tutorSubjectController')
 
-const router =express.Router();
+const router =express.Router({mergeParams: true});
 
 
 router

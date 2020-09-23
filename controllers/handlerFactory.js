@@ -1,4 +1,3 @@
-
 const catchAsync=require('../utils/catchAsync')
 const AppError=require('../utils/appError')
 const APIFeatures=require('../utils/apiFeatures')
@@ -61,11 +60,11 @@ exports.getAll=(Model,document)=>catchAsync(async (req,res,next)=>{
 
   //To allow for nested get reviews on facility and users
   let filter={}
-  if (req.params.facilityId) filter={facility:req.params.facilityId}
+  // if (req.params.facilityId) filter={facility:req.params.facilityId}
   if (req.params.userId) filter={user:req.params.userId}
-  if (req.params.managerId) {
-    if (req.user.id!==req.params.managerId) return next(new AppError('The manager Id does not match your own'))
-    filter = {manager: req.params.managerId}
+  if (req.params.tutorId) {
+    if (String(req.user._id)!==String(req.params.tutorId)) return next(new AppError('Only the tutor can view the subjects',400))
+    filter = {tutor: req.params.tutorId}
   }
   //EXECUTE QUERY
   const features=new APIFeatures(Model.find(filter),req.query);
