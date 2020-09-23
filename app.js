@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
+const morgan=require('morgan');
+const helmet = require('helmet')
 
 const users = require("./routes/usersRoutes");
 const subjects = require("./routes/subjectsRoutes");
@@ -8,6 +10,13 @@ const AppError=require('./utils/appError')
 const error = require("./middleware/error")
 const app = express();
 //middleware
+if (process.env.NODE_ENV==='development'){
+    app.use(morgan('dev'))
+}
+//HTTP SECURITY HEADERS
+app.use(helmet());
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

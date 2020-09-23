@@ -10,7 +10,7 @@ const subjectSchema=new mongoose.Schema({
         ref: 'User',
         required: [true, 'A subject must have a tutor']
     },
-    subjectName:{
+    subject:{
         type:String,
         enum: ['Chemistry', 'Physics', 'Biology', 'Mathematics'],
         required:[true,"Please enter your subject"],

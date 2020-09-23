@@ -28,7 +28,7 @@ router.use("/deleteMe",deleteMe);
 router.use("/updateMyPassword",updatePassword);
 
 
-router.use(restrictTo('admin'))
+// router.use(restrictTo('admin'))
 
 router.route("/" )
     .get(getAllUsers)

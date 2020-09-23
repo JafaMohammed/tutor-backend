@@ -48,7 +48,7 @@ exports.getOne=(Model,document,popOptions)=>catchAsync(async (req,res,next)=>{
 
   const doc=await query;
 
-  if (!doc) return next(new AppError(new Error(`No ${document} found with that ID`),404));
+  if (!doc) return next(new AppError(`No ${document} found with that ID`,404));
   res.status(200).json({
     status:"success",
     data:{

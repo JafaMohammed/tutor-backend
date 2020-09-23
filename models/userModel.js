@@ -1,4 +1,4 @@
-
+const crypto=require('crypto');
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const _ = require('lodash');
@@ -13,12 +13,12 @@ const userSchema = new mongoose.Schema({
         minlength:5,
         maxlength:50,
     },
-    phonenumber: {
+    phoneNumber: {
         type:Number,
         /*TODO provide phone number validation*/
         //validate: [validator.isMobilePhone, "Please enter a valid phone number"],
         required:[true, "Please enter a valid phone number"]
-        
+
     },
     email: {
         type:String,
@@ -27,12 +27,6 @@ const userSchema = new mongoose.Schema({
         lowercase:true,
         validate: [validator.isEmail, "Please provide a valid email"]
     },
-    option:{
-        type:String,
-        enum: ["tutor","student"],
-        required:[true, "Please select an option"]
-    },
-
     password:{
         type:String,
         required:[true, "Please input your password"],
@@ -50,14 +44,23 @@ const userSchema = new mongoose.Schema({
             message: "Passwords do not match",
         }
     },
+    option:{
+        type:String,
+        required: [true, 'Please select an option'],
+        enum: {
+            values: ['tutor', 'student'],
+            message: 'The option can be either a student or a tutor'
+        },
+    },
     photo:{
         type: String,
         default: "default.png"
     },
     role: {
-        type:String, 
-        enum: ["admin", "user"],
-        default: "user"
+        type:String,
+        //cannot select admin
+        enum: ['admin','user'],
+        default: 'user'
     },
 
     passwordChangedAt:Date,
@@ -98,7 +101,6 @@ userSchema.pre("save",async function(next){
        next()
 
     }catch(e){
-        //with a parameter assumes error 
         next(e)
     }
 

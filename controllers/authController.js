@@ -6,13 +6,15 @@ const _ = require('lodash');
 const crypto=require('crypto');
 
 exports.signup = catchAsync(async(req,res,next)=>{
-    const {name, phonenumber,email,password,passwordConfirm,option,photo}=req.body
-        const user = await User.create({
-            name,email,phonenumber,password,
-            passwordConfirm, option,photo
-        });
+    const {name, phoneNumber,email,password,passwordConfirm,option,photo}=req.body
+    //cannot select admin role
 
-        user.generateAuthToken(201, res);
+    const user = await User.create({
+        name,email,phoneNumber,password,
+        passwordConfirm, option,photo
+    });
+
+    user.generateAuthToken(201, res);
       
  })
 
@@ -101,7 +103,6 @@ exports.updatePassword=catchAsync(async (req,res,next)=>{
     if (!req.user) return next(new AppError('You are not logged in',401));
     const user=await User.findById(req.user._id).select('+password');
     // 2) Check if posted password is correct
-    console.log(user);
     if (!await user.verifyPassword(req.body.password,user.password,next)) return next(new AppError('Incorrect Password!',401));
 
     // 3) Update password

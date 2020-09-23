@@ -17,7 +17,7 @@ const auth=catchAsync(async (req,res,next)=>{
 
     const decoded =await promisify(jwt.verify) (token, process.env.JWT_SECRET)
 
-    // 3) CHECK IF USER STILL EXISTs
+    // 3) CHECK IF USER STILL EXISTS
 
      const currentUser = await User.findById(decoded.id)
      if(!currentUser) return next(new AppError('User does not exist', 401))

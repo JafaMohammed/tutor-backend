@@ -5,7 +5,7 @@ const {deleteOne,updateOne,getOne,getAll}=require('../controllers/handlerFactory
 
 
 exports.getMe=(req,res,next)=>{
-    req.params.id=req.user.id;
+    req.params.id=req.user._id;
     next();
 }
 
@@ -49,9 +49,9 @@ const filterObj=(obj,...allowedFields)=>{
     // 2) Get User
     if (!req.user) return next(new AppError(new Error('You are not logged in'),401));
   
-    const filteredBody=filterObj(req.body,'name','email', 'subjects')
+    const filteredBody=filterObj(req.body,'name','email', 'option')
     if (req.file)  filteredBody.photo=req.file.filename;
-    const updatedUser=await User.findByIdAndUpdate(req.user._id,filteredBody,{new:true,runValidators:true});
+    const updatedUser=await User.findByIdAndUpdate(req.user._id,filteredBody,{new:true,useFindAndModify:false,runValidators:true});
   
     // 3) Update user document
     res.status(200).json({
