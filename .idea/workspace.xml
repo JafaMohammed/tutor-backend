@@ -20,17 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="809bfcfe-5f36-4939-86f4-d12e4afb17a4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/reviewsController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/reviewModel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/reviewsRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/bookingController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/bookingController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/handlerFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/handlerFactory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/tutorSubjectController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/tutorSubjectController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/authorize.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/authorize.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/userModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/subjectsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/subjectsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/bookingModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/bookingModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/tutorSubjectModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/tutorSubjectModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/bookingsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/bookingsRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +55,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -66,8 +65,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$/routes" />
+      <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/controllers" />
+      <recent name="$PROJECT_DIR$/utils" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -85,6 +86,9 @@
       <workItem from="1600761992818" duration="8936000" />
       <workItem from="1600777864120" duration="4437000" />
       <workItem from="1600803595912" duration="4772000" />
+      <workItem from="1600852676680" duration="8963000" />
+      <workItem from="1600959589822" duration="3412000" />
+      <workItem from="1600963020645" duration="667000" />
     </task>
     <servers />
   </component>

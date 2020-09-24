@@ -15,15 +15,23 @@ const subjectSchema=new mongoose.Schema({
         enum: ['Chemistry', 'Physics', 'Biology', 'Mathematics'],
         required:[true,"Please enter your subject"],
     },
+    ratingsAverage:{
+        type:Number,
+        default:1,
+        min:[1,'Rating must not be less than 1'],
+        max:[5,'Rating must not be more than 5'],
+        set:val=>Math.round(val*10)/10
+
+    },
+    ratingQuantity:{
+        type:Number,
+        default: 0
+    },
     rate:{
         type:Number,
         required:[true,"Please enter hourly rate"]
     },
 
-},{
-    toJSON: {virtuals:true},
-    toObject: {virtuals:true},
-    id: false
 })
 
 

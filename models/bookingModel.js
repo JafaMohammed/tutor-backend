@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Facility =require('../models/facilityModel')
 const _ =require('lodash')
 const AppError =require('../utils/appError')
 
@@ -32,12 +31,12 @@ const bookingSchema=new mongoose.Schema({
 bookingSchema.pre(/^find/, function (next) {
     this
         .populate({
-            path: 'user',
-            select: 'name email'
+            path: 'subject',
+            select: 'subject rate'
         })
         .populate({
-            path: 'facility',
-            select: 'name'
+            path: 'user',
+            select: 'name email'
         })
     next();
 })

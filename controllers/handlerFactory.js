@@ -26,8 +26,8 @@ exports.updateOne=(Model,document) =>catchAsync(async (req,res,next)=>{
 });
 
 exports.createOne=(Model,document)=>catchAsync(async (req,res,next)=>{
-  if (!req.body.user) req.body.user=req.user.id;
-  if (!req.body.facility) req.body.facility = req.params.facilityId;
+  if (!req.body.user) req.body.user=req.user._id;
+  // if (!req.body.facility) req.body.facility = req.params.facilityId;
 
   const doc=await Model.create(req.body)
     res.status(200).json({
