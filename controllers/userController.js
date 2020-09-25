@@ -11,7 +11,7 @@ exports.getMe=(req,res,next)=>{
 
 
 exports.getAllUsers = getAll(User, 'users')
-exports.getUser= getOne(User,'user')
+exports.getUser= getOne(User,'user',{path: 'subjects',select:'-__v '})
 
 /**Only for admins**/
 exports.createUser=  catchAsync(async(req,res,next)=>{

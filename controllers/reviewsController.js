@@ -16,6 +16,7 @@ exports.createReview=catchAsync(async (req,res,next)=>{
 })
 exports.getAllReviews=getAll(Review,'reviews')
 exports.getReview=getOne(Review,'review')
+/*TODO can be updated by student who created review/admin */
 exports.updateReview=updateOne(Review,'review');
 exports.deleteReview=deleteOne(Review,'review');
 

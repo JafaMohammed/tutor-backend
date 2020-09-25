@@ -18,7 +18,7 @@ exports.createSubject = catchAsync(async (req,res,next)=>{
 })
 
 exports.getAllSubjects = getAll(Subject,'subjects');
-exports.getOneSubject = getOne(Subject, 'subject')
+exports.getOneSubject = getOne(Subject, 'subject',{path: 'reviews',select: '--v'})
 exports.updateSubject = catchAsync(async (req,res,next)=>{
     const subjectId=req.params.id;
 

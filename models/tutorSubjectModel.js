@@ -23,7 +23,7 @@ const subjectSchema=new mongoose.Schema({
         set:val=>Math.round(val*10)/10
 
     },
-    ratingQuantity:{
+    ratingsQuantity:{
         type:Number,
         default: 0
     },
@@ -32,6 +32,17 @@ const subjectSchema=new mongoose.Schema({
         required:[true,"Please enter hourly rate"]
     },
 
+},{
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true},
+    id:false
+})
+
+//Virtual populate
+subjectSchema.virtual('reviews',{
+    ref:'Review',
+    foreignField:'subject',
+    localField:'_id'
 })
 
 
@@ -49,7 +60,7 @@ subjectSchema.pre('save',async function (next){
 subjectSchema.pre(/^find/, function (next) {
     this.populate({
         path: 'tutor',
-        select: 'name photo email phonenumber'
+        select: 'name photo'
     })
     next();
 })

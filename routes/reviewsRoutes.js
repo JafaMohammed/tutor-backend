@@ -1,7 +1,7 @@
 const express=require('express')
 const {getAllReviews,getReview,createReview,updateReview,deleteReview}=require('../controllers/reviewsController')
-const { auth }=require('../middleware/auth');
-const {restrictTo}=require('../middleware/authorize');
+const auth =require('../middleware/auth');
+const restrictTo=require('../middleware/authorize');
 
 const router=express.Router({mergeParams: true});
 
@@ -10,15 +10,15 @@ router.use(auth)
 router
   .route('/')
   .get(getAllReviews)
-  .post(restrictTo('user'),createReview)
+  .post(restrictTo('student'),createReview)
 
 
 
 router
   .route('/:id')
   .get(getReview)
-  .patch(restrictTo('user','admin'),updateReview)
-  .delete(restrictTo('user','admin'),deleteReview)
+  .patch(restrictTo('student','admin'),updateReview)
+  .delete(restrictTo('student','admin'),deleteReview)
 
 
 module.exports=router;

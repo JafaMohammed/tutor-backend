@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const users = require("./routes/usersRoutes");
 const subjects = require("./routes/tutorSubjectsRoutes");
 const bookings = require("./routes/bookingsRoutes");
+const reviews = require("./routes/reviewsRoutes");
 const AppError=require('./utils/appError')
 
 const error = require("./middleware/error")
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1/users",users);
 app.use("/api/v1/subjects",subjects);
 app.use("/api/v1/bookings",bookings);
+app.use("/api/v1/reviews",reviews);
 
 app.all('*',(req,res,next)=>{
 

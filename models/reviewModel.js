@@ -16,8 +16,8 @@ const reviewSchema=new mongoose.Schema({
   },
   subject:{
     type:mongoose.Schema.ObjectId,
-    ref:'Tour',
-    required:[true,'A review must belong to a tour']
+    ref:'Subject',
+    required:[true,'A review must belong to a subject']
   },
   user:{
     type:mongoose.Schema.ObjectId,
@@ -30,7 +30,7 @@ const reviewSchema=new mongoose.Schema({
   id:false
 });
 
-reviewSchema.index({tour: 1,user:1},{unique:true})
+reviewSchema.index({subject: 1,user:1},{unique:true})
 
 reviewSchema.pre(/^find/,function(next) {
 
