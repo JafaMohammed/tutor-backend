@@ -7,17 +7,23 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const AppError = require("../utils/appError");
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
-        required:[true, "Please provide your name"],
-        minlength:5,
+        required:[true, "Please provide your first name"],
+        minlength:3,
+        maxlength:50,
+    },
+    lastName: {
+        type: String,
+        required:[true, "Please provide your last name"],
+        minlength:3,
         maxlength:50,
     },
     phoneNumber: {
         type:Number,
         /*TODO provide phone number validation*/
         //validate: [validator.isMobilePhone, "Please enter a valid phone number"],
-        required:[true, "Please enter a valid phone number"]
+        // required:[true, "Please enter a valid phone number"]
 
     },
     email: {
@@ -46,11 +52,16 @@ const userSchema = new mongoose.Schema({
     },
     option:{
         type:String,
-        required: [true, 'Please select an option'],
+        required: [true, 'Please register as a student or a tutor'],
         enum: {
-            values: ['tutor', 'student'],
-            message: 'The option can be either a student or a tutor'
+            values: ['parent','tutor', 'student'],
+            message: 'You must be either a student or a tutor'
         },
+    },
+    educationLevel: {
+        type: String,
+        required: [true, 'Please provide your level of education'],
+        eval: ['university', 'secondary', 'primary', 'pre-school', 'none']
     },
     photo:{
         type: String,
@@ -153,8 +164,8 @@ userSchema.methods.createPasswordResetToken = function (){
 
 
 
-const User = mongoose.model("User", userSchema);
+mongoose.model("User", userSchema);
 
-module.exports = User;
+
 
    

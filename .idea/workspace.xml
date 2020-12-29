@@ -19,7 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="809bfcfe-5f36-4939-86f4-d12e4afb17a4" name="Default Changelist" comment="" />
+    <list default="true" id="809bfcfe-5f36-4939-86f4-d12e4afb17a4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/tutorSubjectController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/subjectController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/reviewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/reviewModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/tutorSubjectModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/subjectModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/userModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/tutorSubjectsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/tutorSubjectsRoutes.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +52,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -79,6 +87,10 @@
       <workItem from="1600959589822" duration="3412000" />
       <workItem from="1600963020645" duration="667000" />
       <workItem from="1600963708007" duration="3357000" />
+      <workItem from="1601048639233" duration="2883000" />
+      <workItem from="1601295582420" duration="58000" />
+      <workItem from="1608889094097" duration="2978000" />
+      <workItem from="1609160663099" duration="2066000" />
     </task>
     <servers />
   </component>

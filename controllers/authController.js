@@ -1,4 +1,6 @@
-const User = require ("../models/userModel");
+const mongoose = require('mongoose')
+
+const User = mongoose.model('User')
 const AppError =  require ("../utils/appError")
 const catchAsync = require('../utils/catchAsync')
 const sendEmail = require('../utils/email')
@@ -6,11 +8,11 @@ const _ = require('lodash');
 const crypto=require('crypto');
 
 exports.signup = catchAsync(async(req,res,next)=>{
-    const {name, phoneNumber,email,password,passwordConfirm,option,photo}=req.body
+    const {firstName,lastName, phoneNumber,email,password,passwordConfirm,option,photo}=req.body
     //cannot select admin role
 
     const user = await User.create({
-        name,email,phoneNumber,password,
+        firstName,lastName,email,phoneNumber,password,
         passwordConfirm, option,photo
     });
 

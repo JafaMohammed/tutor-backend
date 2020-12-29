@@ -6,8 +6,8 @@ const {
     getBooking,getCheckoutSession
 }=require('../controllers/bookingController')
 
-const auth = require('../middleware/auth');
-const restrictTo = require('../middleware/authorize');
+const auth = require('../middlewares/requireAuth');
+const restrictTo = require('../middlewares/restrictTo');
 
 const router = express.Router({mergeParams: true});
 router.use(auth)

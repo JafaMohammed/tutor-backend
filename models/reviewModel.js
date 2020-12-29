@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const Subject=require('./tutorSubjectModel')
+const Subject=mongoose.model('Subject')
 
 const reviewSchema=new mongoose.Schema({
   review: {
@@ -85,6 +85,4 @@ reviewSchema.post(/^findOneAnd/,async function() {
   await this.r.constructor.calcAverageRating(this.r.subject)
 })
 
-const Review=mongoose.model('Review',reviewSchema);
-
-module.exports=Review;
+mongoose.model('Review',reviewSchema);

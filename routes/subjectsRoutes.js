@@ -1,11 +1,11 @@
 const express = require('express');
-const auth =require('../middleware/auth')
-const restrictTo =require('../middleware/authorize')
+const auth =require('../middlewares/requireAuth')
+const restrictTo =require('../middlewares/restrictTo')
 const {
     createSubject, getAllSubjects,
     getOneSubject,updateSubject,
     deleteSubject
-} =require('../controllers/tutorSubjectController')
+} =require('../controllers/subjectController')
 
 const router =express.Router({mergeParams: true});
 

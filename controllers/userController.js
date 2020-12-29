@@ -1,4 +1,6 @@
-const User = require ('../models/userModel');
+const mongoose = require('mongoose')
+
+const User = mongoose.model('User')
 const AppError =  require ("../utils/appError")
 const catchAsync = require('../utils/catchAsync')
 const {deleteOne,updateOne,getOne,getAll}=require('../controllers/handlerFactory')

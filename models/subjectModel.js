@@ -1,7 +1,7 @@
 const mongoose =require('mongoose')
 const _ =require('lodash')
 
-const User = require('./userModel')
+const User = mongoose.model('User')
 const AppError = require('../utils/appError')
 
 const subjectSchema=new mongoose.Schema({
@@ -31,6 +31,11 @@ const subjectSchema=new mongoose.Schema({
         type:Number,
         required:[true,"Please enter hourly rate"]
     },
+    category: {
+        type: String,
+        required: [true, 'Please provide a category'],
+        eval: ['university', 'secondary', 'primary', 'pre-school','none']
+    }
 
 },{
     toJSON:{virtuals:true},
@@ -64,6 +69,4 @@ subjectSchema.pre(/^find/, function (next) {
     })
     next();
 })
-const tutorSubjectModel =mongoose.model('Subject',subjectSchema);
-
-module.exports = tutorSubjectModel
+mongoose.model('Subject',subjectSchema);

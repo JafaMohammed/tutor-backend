@@ -1,14 +1,16 @@
+const mongoose = require('mongoose')
+
 const {promisify}=require('util')
 const jwt = require('jsonwebtoken');
-const User = require ("../models/userModel");
+const User = mongoose.model('User')
 const AppError =  require ("../utils/appError");
 const catchAsync = require('../utils/catchAsync');
 
-const auth=catchAsync(async (req,res,next)=>{
+const requireAuth=catchAsync(async (req, res, next)=>{
     // 1) GET TOKEN AND CHECK IF IT EXISTS
     let token;
-
-    if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
+    const {authorization} = req.headers
+    if(authorization && authorization.startsWith('Bearer')){
         token=req.headers.authorization.split(' ')[1]
     }
     if(!token) return next(new AppError('You are not logged in, please log in and try again.',401))
@@ -25,4 +27,4 @@ const auth=catchAsync(async (req,res,next)=>{
      next()
 
 })
-module.exports=auth;
+module.exports=requireAuth;

@@ -1,4 +1,6 @@
-const Booking  = require('../models/bookingModel');
+const mongoose = require('mongoose')
+
+const Booking  = mongoose.model('Booking')
 
 const {
     getOne, getAll,
