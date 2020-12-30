@@ -43,4 +43,14 @@ exports.updateSubject = catchAsync(async (req,res,next)=>{
         }
     })
 });
-exports.deleteSubject = deleteOne(Subject,'subject');
+exports.deleteSubject = catchAsync(async (req,res,next)=>{
+    const subject=await Subject.findByIdAndDelete(req.params.id)
+    if (!subject) return next(new AppError(new Error(`No review found with that ID`),404));
+
+    if (String(req.user._id)!==String(subject.tutor._id)) return next(new AppError('You cannot delete this subject!',403))
+
+    res.status(204).json({
+        status:"success",
+        data:null
+    })
+});

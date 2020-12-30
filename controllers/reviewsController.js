@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const AppError = require('../utils/appError')
 
 const Review=mongoose.model('Review')
-const User=mongoose.model('User')
 const _=require('lodash')
 const catchAsync=require('../utils/catchAsync')
 const {getOne,getAll}=require('../controllers/handlerFactory')

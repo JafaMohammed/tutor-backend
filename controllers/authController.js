@@ -17,6 +17,7 @@ exports.signup = catchAsync(async(req,res,next)=>{
     });
 
     user.generateAuthToken(201, res);
+    /* TODO send welcome email*/
       
  })
 
