@@ -6,7 +6,11 @@ const answersSchema = new mongoose.Schema({
         ref:'Question',
         required:[true,'An answer must be for a question']
     },
-    userId:{
+    answer: {
+      type: String,
+      required: [true, 'Please provide your answer']
+    },
+    user:{
         type:mongoose.Schema.ObjectId,
         ref:'User',
         required:[true,'A question must belong to a user']
@@ -23,10 +27,15 @@ const answersSchema = new mongoose.Schema({
 
 answersSchema.pre(/^find/, function (next){
     this.populate({
-        path: 'userId',
+        path: 'user',
         select: 'firstName photo option'
     })
+        .populate({
+            path: 'question',
+            select: '-user -__v -timeAsked -categories'
+        })
     next()
 })
+
 
 mongoose.model('Answer', answersSchema)

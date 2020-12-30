@@ -14,7 +14,6 @@ exports.getAllQuestions=getAll(Question,'question');
 exports.updateQuestion=catchAsync(async (req,res,next)=>{
     const questionId=req.params.id;
 
-
     const question=await Question.findById(questionId);
 
     if(!question) return next(new AppError(`No question found with that ID`,404));
@@ -35,7 +34,7 @@ exports.updateQuestion=catchAsync(async (req,res,next)=>{
 //Question can only be deleted by user who asked
 exports.deleteQuestion=catchAsync(async (req,res,next)=>{
     const question=await Question.findByIdAndDelete(req.params.id)
-    if (!question) return next(new AppError(new Error(`No review found with that ID`),404));
+    if (!question) return next(new AppError(new Error(`No question found with that ID`),404));
 
     if (String(req.user._id)!==String(question.user._id)) return next(new AppError('You cannot delete this review!',403))
 
