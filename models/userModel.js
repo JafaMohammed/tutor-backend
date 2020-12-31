@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const AppError = require("../utils/appError");
+
+const userOptions = {discriminatorKey: 'option'}
+
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -73,6 +76,19 @@ const userSchema = new mongoose.Schema({
         enum: ['admin','user'],
         default: 'user'
     },
+    answersProvided: {
+        type: Number,
+        default: 0
+    },
+
+    //TUTOR ONLY
+    summary: {
+        type: String,
+    },
+    about: String,
+    questionsAnswered: Number,
+    hoursTaught: Number,
+
 
     passwordChangedAt:Date,
     passwordResetToken:String,
@@ -87,7 +103,7 @@ const userSchema = new mongoose.Schema({
     toJSON: {virtuals:true},
     toObject: {virtuals:true},
     id: false
-});
+},userOptions);
 
 userSchema.virtual('subjects',{
     ref: 'Subject',

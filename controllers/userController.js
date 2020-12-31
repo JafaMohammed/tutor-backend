@@ -49,9 +49,9 @@ const filterObj=(obj,...allowedFields)=>{
     if (req.body.password||req.body.passwordConfirm) return next(new AppError('This route is not for password updates. Please use /updateMyPassword',400));
   
     // 2) Get User
-    if (!req.user) return next(new AppError(new Error('You are not logged in'),401));
+    if (!req.user) return next(new AppError('You are not logged in',401));
   
-    const filteredBody=filterObj(req.body,'name','email', 'option')
+    const filteredBody=req.user.option==='tutor'?filterObj(req.body,'firstName','lastName','photo','summary','about'):filterObj(req.body,'firstName','lastName','photo', 'educationLevel')
     if (req.file)  filteredBody.photo=req.file.filename;
     const updatedUser=await User.findByIdAndUpdate(req.user._id,filteredBody,{new:true,useFindAndModify:false,runValidators:true});
   
@@ -69,6 +69,34 @@ exports.deleteMe=catchAsync(async (req,res,next)=>{
     res.status(204).json({
         status:'success',
         data:null
+    })
+})
+
+exports.getUsersStats = catchAsync(async (req,res,next)=>{
+    const totalNumber = await User.aggregate([
+        {$match: {role: 'user'}},
+        {
+            $group:{
+                _id: '$option',
+                numUsers: {$sum: 1},
+            }
+        }
+    ])
+    const education = await User.aggregate([
+        {$match: {role: 'user'}},
+        {
+            $group:{
+                _id: '$educationLevel',
+                numUsers: {$sum: 1},
+            }
+        }
+    ])
+    res.status(200).json({
+        status:"success",
+        data:{
+            totalNumber,
+            education
+        }
     })
 })
 

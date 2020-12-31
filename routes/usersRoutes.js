@@ -4,7 +4,8 @@ const restrictTo=require('../middlewares/restrictTo')
 const {
     getAllUsers, getUser,
     createUser, updateUser,getMe,
-    deleteUser, updateMe,deleteMe
+    deleteUser, updateMe,deleteMe,
+    getUsersStats
 } = require('../controllers/userController');
 
 const {updatePassword} = require('../controllers/authController')
@@ -13,6 +14,7 @@ const router = express.Router();
 const subjectRouter=require('./subjectsRoutes')
 const reviewRouter=require('./reviewsRoutes')
 
+router.route('/user-stats').get(getUsersStats)
 
 router.use(auth);
 //use update me

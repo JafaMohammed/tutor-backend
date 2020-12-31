@@ -31,7 +31,7 @@ const subjectSchema=new mongoose.Schema({
         type:Number,
         required:[true,"Please enter hourly rate"]
     },
-    category: {
+    category: { //target students
         type: String,
         required: [true, 'Please provide a category'],
         eval: ['university', 'secondary', 'primary', 'pre-school','none']
