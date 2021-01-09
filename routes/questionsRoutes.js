@@ -7,9 +7,11 @@ const {
     deleteQuestion
 }=require('../controllers/questionController')
 const auth =require('../middlewares/requireAuth');
-const restrictTo=require('../middlewares/restrictTo');
-
+const answersRouter = require('../routes/answersRoutes')
 const router=express.Router({mergeParams: true});
+
+//GET ALL REVIEWS FOR A USER
+router.use('/:questionId/answers',answersRouter)
 
 
 router

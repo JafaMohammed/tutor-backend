@@ -59,8 +59,8 @@ exports.getAll=(Model,document)=>catchAsync(async (req,res,next)=>{
 
   //To allow for nested get reviews on facility and users
   let filter={}
-  // if (req.params.facilityId) filter={facility:req.params.facilityId}
   if (req.params.userId) filter={user:req.params.userId}
+  if (req.params.questionId) filter={question:req.params.questionId}
   if (req.params.tutorId) {
     if (String(req.user._id)!==String(req.params.tutorId)) return next(new AppError('Only the tutor can view the subjects',400))
     filter = {tutor: req.params.tutorId}
