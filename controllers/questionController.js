@@ -10,7 +10,7 @@ const {
 
 exports.getSingleQuestion=getOne(Question,'question', {path: 'answers', select: '-__v'});
 exports.createQuestion=createOne(Question,'question');
-exports.getAllQuestions=getAll(Question,'question');
+exports.getAllQuestions=getAll(Question,'question',{path:'answers', select: '-__v'});
 exports.updateQuestion=catchAsync(async (req,res,next)=>{
     const questionId=req.params.id;
 

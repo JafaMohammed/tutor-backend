@@ -1,3 +1,4 @@
+const path=require('path');
 require('./models/userModel')
 require('./models/subjectModel')
 require('./models/reviewModel')
@@ -25,6 +26,10 @@ const errorHandler = require("./middlewares/errorHandler")
 const app = express();
 //middlewares
 app.use(cors())
+
+app.use(express.static(path.join(__dirname,'public')));
+
+
 if (process.env.NODE_ENV==='development'){
     app.use(morgan('dev'))
 }

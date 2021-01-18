@@ -55,7 +55,7 @@ exports.getOne=(Model,document,popOptions)=>catchAsync(async (req,res,next)=>{
   });
 
 });
-exports.getAll=(Model,document)=>catchAsync(async (req,res,next)=>{
+exports.getAll=(Model,document,popOptions)=>catchAsync(async (req,res,next)=>{
 
   //To allow for nested get reviews on facility and users
   let filter={}
@@ -66,7 +66,10 @@ exports.getAll=(Model,document)=>catchAsync(async (req,res,next)=>{
     filter = {tutor: req.params.tutorId}
   }
   //EXECUTE QUERY
-  const features=new APIFeatures(Model.find(filter),req.query);
+  let query = Model.find(filter)
+  if (popOptions) query=query.populate(popOptions)
+
+  const features=new APIFeatures(query,req.query);
   features
     .filter()
     .sort()
@@ -74,6 +77,7 @@ exports.getAll=(Model,document)=>catchAsync(async (req,res,next)=>{
     .paginate();
 
   const doc=await features.query;
+
   // const doc=await features.query.explain();
 
   res.status(200).json({

@@ -34,7 +34,7 @@ questionsSchema.virtual('answers',{
 questionsSchema.pre(/^find/, function (next){
     this.populate({
         path: 'user',
-        select: 'firstName photo option'
+        select: 'firstName'
     })
     next()
 })

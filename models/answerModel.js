@@ -29,12 +29,12 @@ const answersSchema = new mongoose.Schema({
 answersSchema.pre(/^find/, function (next){
     this.populate({
         path: 'user',
-        select: 'firstName photo option'
+        select: 'firstName lastName photo'
     })
-        .populate({
-            path: 'question',
-            select: '-user -__v -timeAsked -categories'
-        })
+    //     .populate({
+    //         path: 'question',
+    //         select: '-user -__v -timeAsked -categories'
+    //     })
     next()
 })
 answersSchema.statics.calcAnswersProvided = async function(userId){

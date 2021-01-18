@@ -5,7 +5,9 @@ const {
     getAllUsers, getUser,
     createUser, updateUser,getMe,
     deleteUser, updateMe,deleteMe,
-    getUsersStats
+    getUsersStats,
+    uploadUserPhoto,
+    resizeUserPhoto
 } = require('../controllers/userController');
 
 const {updatePassword} = require('../controllers/authController')
@@ -19,7 +21,12 @@ router.route('/user-stats').get(getUsersStats)
 router.use(auth);
 //use update me
 router.get('/me',getMe,getUser)
-router.use("/updateMe",updateMe);
+router.use(
+    "/updateMe",
+    uploadUserPhoto,
+    resizeUserPhoto,
+    updateMe
+);
 router.use("/deleteMe",deleteMe);
 router.use("/updateMyPassword",updatePassword);
 
